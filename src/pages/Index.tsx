@@ -2,38 +2,18 @@
 import { useState } from 'react';
 import Navbar from '@/components/Navbar';
 import Hero from '@/components/Hero';
-import ContentRow from '@/components/ContentRow';
-import MovieModal from '@/components/MovieModal';
-import { featuredContent, categories, Movie } from '@/data/movies';
+import PCBuilder from '@/components/PCBuilder';
+import ChatButton from '@/components/ChatButton';
 
 const Index = () => {
-  const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
-  
   return (
-    <div className="min-h-screen bg-netflix-black text-white">
+    <div className="min-h-screen bg-[#1A1F2C] text-white">
       <Navbar />
-      
       <main>
-        <Hero 
-          featured={featuredContent} 
-          onOpenModal={setSelectedMovie}
-        />
-        
-        <div className="relative z-10 -mt-20">
-          {categories.map((category) => (
-            <ContentRow 
-              key={category.id} 
-              category={category} 
-              onSelectMovie={setSelectedMovie}
-            />
-          ))}
-        </div>
+        <Hero />
+        <PCBuilder />
       </main>
-      
-      <MovieModal 
-        movie={selectedMovie}
-        onClose={() => setSelectedMovie(null)}
-      />
+      <ChatButton />
     </div>
   );
 };
