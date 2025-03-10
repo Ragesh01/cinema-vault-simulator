@@ -1,12 +1,39 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+
+import { useState } from 'react';
+import Navbar from '@/components/Navbar';
+import Hero from '@/components/Hero';
+import ContentRow from '@/components/ContentRow';
+import MovieModal from '@/components/MovieModal';
+import { featuredContent, categories, Movie } from '@/data/movies';
 
 const Index = () => {
+  const [selectedMovie, setSelectedMovie] = useState<Movie | null>(null);
+  
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
-      </div>
+    <div className="min-h-screen bg-netflix-black text-white">
+      <Navbar />
+      
+      <main>
+        <Hero 
+          featured={featuredContent} 
+          onOpenModal={setSelectedMovie}
+        />
+        
+        <div className="relative z-10 -mt-20">
+          {categories.map((category) => (
+            <ContentRow 
+              key={category.id} 
+              category={category} 
+              onSelectMovie={setSelectedMovie}
+            />
+          ))}
+        </div>
+      </main>
+      
+      <MovieModal 
+        movie={selectedMovie}
+        onClose={() => setSelectedMovie(null)}
+      />
     </div>
   );
 };
