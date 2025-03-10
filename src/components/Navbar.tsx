@@ -1,6 +1,6 @@
 
-import { Menu } from 'lucide-react';
 import { ButtonCustom } from './ui/button-custom';
+import { Menu, Ticket } from 'lucide-react';
 
 const Navbar = () => {
   return (
@@ -9,19 +9,23 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4">
             <h1 className="text-2xl font-bold bg-gradient-to-r from-[#9b87f5] to-[#6E59A5] bg-clip-text text-transparent">
-              BuildMyPC
+              CollageArt 2024
             </h1>
-            <div className="hidden md:flex space-x-4">
-              <a href="#" className="hover:text-[#9b87f5] transition">Build</a>
-              <a href="#" className="hover:text-[#9b87f5] transition">Parts</a>
-              <a href="#" className="hover:text-[#9b87f5] transition">Guides</a>
+            <div className="hidden md:flex space-x-6">
+              <a href="#about" className="hover:text-[#9b87f5] transition">About</a>
+              <a href="#schedule" className="hover:text-[#9b87f5] transition">Schedule</a>
+              <a href="#gallery" className="hover:text-[#9b87f5] transition">Gallery</a>
+              <a href="#contact" className="hover:text-[#9b87f5] transition">Contact</a>
             </div>
           </div>
           <div className="flex items-center space-x-4">
             <ButtonCustom variant="ghost" className="md:hidden">
               <Menu className="h-6 w-6" />
             </ButtonCustom>
-            <ButtonCustom>Start Building</ButtonCustom>
+            <ButtonCustom>
+              <Ticket className="w-4 h-4 mr-2" />
+              Register Now
+            </ButtonCustom>
           </div>
         </div>
       </div>
