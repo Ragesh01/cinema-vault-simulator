@@ -2,18 +2,8 @@
 import { Plus } from 'lucide-react';
 import { ButtonCustom } from './ui/button-custom';
 
-interface ComponentCardProps {
-  component: {
-    id: number;
-    name: string;
-    price: number;
-    image: string;
-  };
-  onSelect: () => void;
-}
-
-const ComponentCard = ({ component, onSelect }: ComponentCardProps) => {
-  const formatPrice = (price: number) => {
+const ComponentCard = ({ component, onSelect }) => {
+  const formatPrice = (price) => {
     return new Intl.NumberFormat('en-IN', {
       style: 'currency',
       currency: 'INR',

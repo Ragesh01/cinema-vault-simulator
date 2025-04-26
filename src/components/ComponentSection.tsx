@@ -1,13 +1,7 @@
 
-import { Component } from '@/types';
 import ComponentCard from './ComponentCard';
 
-interface ComponentSectionProps {
-  title: string;
-  onSelect: () => void;
-}
-
-const ComponentSection = ({ title, onSelect }: ComponentSectionProps) => {
+const ComponentSection = ({ title, onSelect }) => {
   // Mock data - in a real app this would come from an API
   const components = [
     {
@@ -29,7 +23,7 @@ const ComponentSection = ({ title, onSelect }: ComponentSectionProps) => {
       image: '/placeholder.svg'
     },
     {
-      id: 4,
+      id: 4, 
       name: 'AMD Ryzen 5 5600G',
       price: 19999,
       image: '/placeholder.svg'

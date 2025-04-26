@@ -2,14 +2,7 @@
 import React from 'react';
 import { cn } from '@/lib/utils';
 
-interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: 'primary' | 'secondary' | 'ghost' | 'outline';
-  size?: 'sm' | 'md' | 'lg';
-  isLoading?: boolean;
-  icon?: React.ReactNode;
-}
-
-const ButtonCustom = React.forwardRef<HTMLButtonElement, ButtonProps>(
+const ButtonCustom = React.forwardRef(
   ({ className, variant = 'primary', size = 'md', isLoading, icon, children, ...props }, ref) => {
     const baseClasses = 'relative inline-flex items-center justify-center font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:pointer-events-none disabled:opacity-50';
     
