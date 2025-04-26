@@ -1,5 +1,5 @@
-
 import ComponentCard from './ComponentCard';
+import PlaceholderCard from './PlaceholderCard';
 
 type Component = {
   id: number;
@@ -46,6 +46,7 @@ const ComponentSection = ({ title, onSelect }: ComponentSectionProps) => {
     <section>
       <h2 className="text-lg font-medium mb-4 text-gray-800">{title}</h2>
       <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-none">
+        <PlaceholderCard />
         {components.map(component => (
           <ComponentCard
             key={component.id}
