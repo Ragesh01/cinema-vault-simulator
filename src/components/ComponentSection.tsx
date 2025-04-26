@@ -38,7 +38,7 @@ const ComponentSection = ({ title, onSelect }: ComponentSectionProps) => {
 
   return (
     <section>
-      <h2 className="text-lg font-medium mb-4">{title}</h2>
+      <h2 className="text-lg font-medium mb-4 text-gray-800">{title}</h2>
       <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-none">
         {components.map(component => (
           <ComponentCard

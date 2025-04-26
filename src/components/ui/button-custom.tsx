@@ -11,13 +11,13 @@ interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 
 const ButtonCustom = React.forwardRef<HTMLButtonElement, ButtonProps>(
   ({ className, variant = 'primary', size = 'md', isLoading, icon, children, ...props }, ref) => {
-    const baseClasses = 'relative inline-flex items-center justify-center font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-netflix-red disabled:pointer-events-none disabled:opacity-50';
+    const baseClasses = 'relative inline-flex items-center justify-center font-medium transition-all focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary disabled:pointer-events-none disabled:opacity-50';
     
     const variantClasses = {
-      primary: 'bg-netflix-red hover:bg-[#F40612] text-white shadow-sm',
-      secondary: 'bg-netflix-dark-gray hover:bg-[#3A3A3A] text-white',
-      ghost: 'bg-transparent hover:bg-netflix-dark/30 text-white',
-      outline: 'border border-netflix-gray bg-transparent hover:bg-netflix-dark/30 text-white',
+      primary: 'bg-primary text-white hover:bg-primary-dark shadow-sm',
+      secondary: 'bg-gray-200 hover:bg-gray-300 text-gray-800',
+      ghost: 'bg-transparent hover:bg-gray-100 text-gray-800',
+      outline: 'border border-gray-300 bg-transparent hover:bg-gray-50 text-gray-800',
     };
     
     const sizeClasses = {
