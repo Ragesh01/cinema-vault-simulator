@@ -1,9 +1,21 @@
 
 import ComponentCard from './ComponentCard';
 
-const ComponentSection = ({ title, onSelect }) => {
+type Component = {
+  id: number;
+  name: string;
+  price: number;
+  image: string;
+};
+
+type ComponentSectionProps = {
+  title: string;
+  onSelect: () => void;
+};
+
+const ComponentSection = ({ title, onSelect }: ComponentSectionProps) => {
   // Mock data - in a real app this would come from an API
-  const components = [
+  const components: Component[] = [
     {
       id: 1,
       name: 'AMD Ryzen 5 5600X',

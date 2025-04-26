@@ -1,9 +1,20 @@
 
 import { useEffect, useState } from 'react';
 import { X, Play, Plus, ThumbsUp, VolumeX } from 'lucide-react';
-import { Movie } from '@/data/movies';
 import { ButtonCustom } from './ui/button-custom';
 import { cn } from '@/lib/utils';
+
+interface Movie {
+  title: string;
+  backdropImage?: string;
+  image: string;
+  rating: number;
+  year: string | number;
+  maturityRating: string;
+  duration: string;
+  description: string;
+  genre: string[];
+}
 
 interface MovieModalProps {
   movie: Movie | null;
