@@ -1,43 +1,47 @@
 
-import { Card } from './ui/card';
-import { Cpu, HardDrive, Monitor } from 'lucide-react';
+import { useState } from 'react';
+import { Search, Plus, X, Save } from 'lucide-react';
+import { ButtonCustom } from './ui/button-custom';
+import ComponentSection from './ComponentSection';
+import BuildSummary from './BuildSummary';
 
 const PCBuilder = () => {
-  return (
-    <div className="container mx-auto px-4 py-16">
-      <h2 className="text-3xl font-bold mb-8">Popular Components</h2>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        <ComponentCard
-          icon={<Cpu className="w-8 h-8" />}
-          title="Processors"
-          description="Latest generation CPUs from top manufacturers"
-        />
-        <ComponentCard
-          icon={<HardDrive className="w-8 h-8" />}
-          title="Storage"
-          description="SSDs and HDDs for all your storage needs"
-        />
-        <ComponentCard
-          icon={<Monitor className="w-8 h-8" />}
-          title="Monitors"
-          description="High refresh rate displays for gaming"
-        />
-      </div>
-    </div>
-  );
-};
+  const [selectedCategory, setSelectedCategory] = useState<string>('');
 
-const ComponentCard = ({ icon, title, description }: { icon: React.ReactNode; title: string; description: string }) => {
+  const categories = [
+    { id: 'cpu', name: 'CPU' },
+    { id: 'ram', name: 'RAM' },
+    { id: 'storage', name: 'Storage' },
+    { id: 'motherboard', name: 'Motherboard' },
+    { id: 'cooler', name: 'Cooler' },
+    { id: 'cabinet', name: 'Cabinet' },
+  ];
+
   return (
-    <Card className="p-6 bg-[#2F2F2F] border-[#403E43] hover:border-[#9b87f5] transition-colors">
-      <div className="flex items-start space-x-4">
-        <div className="text-[#9b87f5]">{icon}</div>
-        <div>
-          <h3 className="text-xl font-semibold mb-2">{title}</h3>
-          <p className="text-gray-400">{description}</p>
+    <div className="flex gap-6">
+      <div className="flex-1">
+        <div className="relative mb-6">
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
+          <input
+            type="text"
+            placeholder="Search and select your rig Component"
+            className="w-full pl-10 pr-4 py-2 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent"
+          />
+        </div>
+        
+        <div className="space-y-8">
+          {categories.map(category => (
+            <ComponentSection 
+              key={category.id}
+              title={category.name}
+              onSelect={() => setSelectedCategory(category.id)}
+            />
+          ))}
         </div>
       </div>
-    </Card>
+      
+      <BuildSummary />
+    </div>
   );
 };
 
