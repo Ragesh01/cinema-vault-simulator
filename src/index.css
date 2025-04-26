@@ -9,6 +9,7 @@
   :root {
     --background: 0 0% 100%;
     --foreground: 0 0% 10%;
+    --border: 220 13% 91%; /* Light gray border color */
   }
 }
 
@@ -33,3 +34,4 @@
     display: none;
   }
 }
+

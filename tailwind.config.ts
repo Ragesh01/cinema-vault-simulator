@@ -24,6 +24,18 @@ export default {
           DEFAULT: '#9b87f5',
           dark: '#7E69AB',
         },
+        border: {
+          DEFAULT: 'hsl(var(--border))', // Add this line
+        },
+        background: {
+          DEFAULT: 'hsl(var(--background))',
+        },
+        foreground: {
+          DEFAULT: 'hsl(var(--foreground))',
+        },
+      },
+      borderColor: {
+        DEFAULT: 'hsl(var(--border))', // Add this line
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
@@ -32,3 +44,4 @@ export default {
   },
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;
+
