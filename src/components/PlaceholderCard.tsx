@@ -1,4 +1,3 @@
-
 import { Plus, X } from 'lucide-react';
 
 type PlaceholderCardProps = {
@@ -9,9 +8,10 @@ type PlaceholderCardProps = {
     image: string;
   };
   onClear?: () => void;
+  variant?: 'empty' | 'find-more';
 };
 
-const PlaceholderCard = ({ selectedComponent, onClear }: PlaceholderCardProps) => {
+const PlaceholderCard = ({ selectedComponent, onClear, variant = 'empty' }: PlaceholderCardProps) => {
   const formatPrice = (price: number) => {
     return new Intl.NumberFormat('en-IN', {
       style: 'currency',
@@ -44,21 +44,20 @@ const PlaceholderCard = ({ selectedComponent, onClear }: PlaceholderCardProps) =
     );
   }
 
+  if (variant === 'find-more') {
+    return (
+      <div className="flex items-center justify-center min-w-[240px] sm:min-w-[200px] lg:min-w-[240px] p-4 border border-[#7C3AED] rounded-lg bg-white shadow-sm hover:shadow-md transition-all dark:bg-gray-800 dark:border-[#9b87f5] dark:text-gray-200">
+        <span className="flex items-center gap-2 text-[#7C3AED] dark:text-[#9b87f5]">
+          <Plus className="w-5 h-5" />
+          Find More
+        </span>
+      </div>
+    );
+  }
+
   return (
-    <div className="relative flex flex-col min-w-[240px] sm:min-w-[200px] lg:min-w-[240px] p-4 border-2 border-dashed border-[#7C3AED] rounded-lg bg-white shadow-sm hover:border-primary hover:shadow-md transition-all dark:bg-gray-800 dark:border-[#9b87f5] dark:text-gray-200">
-      <div className="w-full h-24 sm:h-32 mb-4 flex items-center justify-center">
-        <Plus className="w-8 h-8 text-[#7C3AED] dark:text-[#9b87f5]" />
-      </div>
-      <h3 className="font-medium text-sm mb-2 text-gray-800 dark:text-gray-200">Add Component</h3>
-      <div className="flex items-center justify-between mt-auto">
-        <span className="text-sm text-gray-500 dark:text-gray-400">Click to select</span>
-        <div className="text-[#7C3AED] dark:text-[#9b87f5]">
-          <Plus className="w-4 h-4" />
-        </div>
-      </div>
-      <div className="hidden sm:block absolute -top-8 left-0 right-0 text-xs text-gray-500 text-center dark:text-gray-400">
-        Click the + icon on a card to fill this slot with that component's image, name, and price.
-      </div>
+    <div className="relative flex items-center justify-center min-w-[240px] sm:min-w-[200px] lg:min-w-[240px] p-4 border-2 border-dashed border-[#7C3AED] rounded-lg bg-gray-50 hover:border-solid transition-all dark:bg-gray-800/50 dark:border-[#9b87f5]">
+      <Plus className="w-12 h-12 text-[#7C3AED] dark:text-[#9b87f5]" />
     </div>
   );
 };

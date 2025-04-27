@@ -1,5 +1,6 @@
 
 import { useState } from 'react';
+import { ArrowRight } from 'lucide-react';
 import ComponentCard from './ComponentCard';
 import PlaceholderCard from './PlaceholderCard';
 
@@ -57,9 +58,9 @@ const ComponentSection = ({ title, onSelect }: ComponentSectionProps) => {
   };
 
   return (
-    <section>
+    <section className="relative">
       <h2 className="text-lg font-medium mb-4 text-gray-800 dark:text-gray-200">{title}</h2>
-      <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-none">
+      <div className="flex gap-6 overflow-x-auto pb-4 scrollbar-none relative">
         <PlaceholderCard 
           selectedComponent={selectedComponent} 
           onClear={handleClearComponent} 
@@ -71,6 +72,12 @@ const ComponentSection = ({ title, onSelect }: ComponentSectionProps) => {
             onSelect={handleSelectComponent}
           />
         ))}
+        <PlaceholderCard variant="find-more" />
+        {components.length > 3 && (
+          <div className="absolute right-0 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-gradient-to-l from-white dark:from-gray-900 pointer-events-none">
+            <ArrowRight className="w-5 h-5 text-gray-400" />
+          </div>
+        )}
       </div>
     </section>
   );
