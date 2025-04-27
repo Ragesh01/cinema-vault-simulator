@@ -1,3 +1,5 @@
+
+import { useState } from 'react';
 import ComponentCard from './ComponentCard';
 import PlaceholderCard from './PlaceholderCard';
 
@@ -10,10 +12,12 @@ type Component = {
 
 type ComponentSectionProps = {
   title: string;
-  onSelect: () => void;
+  onSelect: (component: Component | undefined) => void;
 };
 
 const ComponentSection = ({ title, onSelect }: ComponentSectionProps) => {
+  const [selectedComponent, setSelectedComponent] = useState<Component | undefined>(undefined);
+  
   // Mock data - in a real app this would come from an API
   const components: Component[] = [
     {
@@ -42,16 +46,29 @@ const ComponentSection = ({ title, onSelect }: ComponentSectionProps) => {
     }
   ];
 
+  const handleSelectComponent = (component: Component) => {
+    setSelectedComponent(component);
+    onSelect(component);
+  };
+  
+  const handleClearComponent = () => {
+    setSelectedComponent(undefined);
+    onSelect(undefined);
+  };
+
   return (
     <section>
-      <h2 className="text-lg font-medium mb-4 text-gray-800">{title}</h2>
+      <h2 className="text-lg font-medium mb-4 text-gray-800 dark:text-gray-200">{title}</h2>
       <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-none">
-        <PlaceholderCard />
+        <PlaceholderCard 
+          selectedComponent={selectedComponent} 
+          onClear={handleClearComponent} 
+        />
         {components.map(component => (
           <ComponentCard
             key={component.id}
             component={component}
-            onSelect={onSelect}
+            onSelect={handleSelectComponent}
           />
         ))}
       </div>
