@@ -1,9 +1,12 @@
 
 import { useState, useEffect } from 'react';
-import { Search, ArrowLeft, Moon, Sun } from 'lucide-react';
+import { Search, ArrowLeft, Moon, Sun, X } from 'lucide-react';
 import ComponentSection from './ComponentSection';
 import BuildSummary from './BuildSummary';
 import { Switch } from './ui/switch';
+import { Sheet, SheetContent, SheetTrigger } from './ui/sheet';
+import { ButtonCustom } from './ui/button-custom';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 type Component = {
   id: number;
@@ -20,6 +23,8 @@ const PCBuilder = () => {
   const [selectedCategory, setSelectedCategory] = useState('');
   const [selectedComponents, setSelectedComponents] = useState<SelectedComponents>({});
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const isMobile = useIsMobile();
+  const [isSheetOpen, setIsSheetOpen] = useState(false);
   
   useEffect(() => {
     // Apply or remove dark mode class based on state
@@ -55,9 +60,19 @@ const PCBuilder = () => {
     return Object.values(selectedComponents).reduce((total, component) => total + component.price, 0);
   };
 
+  const summaryContent = (
+    <BuildSummary 
+      selectedComponents={Object.entries(selectedComponents).map(([category, component]) => ({
+        category,
+        ...component
+      }))}
+      total={calculateTotal()}
+    />
+  );
+
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
-      <main className="container mx-auto px-4 py-6">
+    <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+      <main className="container mx-auto px-4 py-6 max-w-7xl">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <div className="flex items-center gap-3">
             <button className="text-gray-600 hover:text-primary transition-colors dark:text-gray-400">
@@ -74,11 +89,24 @@ const PCBuilder = () => {
               className="data-[state=checked]:bg-[#7C3AED]"
             />
             <Moon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
+
+            {isMobile && (
+              <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
+                <SheetTrigger asChild>
+                  <ButtonCustom variant="outline" size="sm" className="ml-4">
+                    Summary
+                  </ButtonCustom>
+                </SheetTrigger>
+                <SheetContent className="w-[85vw] sm:max-w-md p-0">
+                  {summaryContent}
+                </SheetContent>
+              </Sheet>
+            )}
           </div>
         </div>
 
         <div className="flex flex-col lg:flex-row gap-6">
-          <div className="flex-1 w-full">
+          <div className="flex-1 w-full overflow-x-hidden">
             <div className="relative mb-6">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
               <input
@@ -99,15 +127,11 @@ const PCBuilder = () => {
             </div>
           </div>
           
-          <div className="w-full lg:w-[400px]">
-            <BuildSummary 
-              selectedComponents={Object.entries(selectedComponents).map(([category, component]) => ({
-                category,
-                ...component
-              }))}
-              total={calculateTotal()}
-            />
-          </div>
+          {!isMobile && (
+            <div className="hidden lg:block">
+              {summaryContent}
+            </div>
+          )}
         </div>
       </main>
     </div>

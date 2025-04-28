@@ -39,11 +39,11 @@ const BuildSummary = ({ selectedComponents, total }: BuildSummaryProps) => {
   };
 
   return (
-    <div className="w-full lg:max-w-[380px] h-fit lg:sticky lg:top-24 p-4 sm:p-6 border border-gray-200 rounded-lg bg-white shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:text-white">
+    <div className="w-full h-full flex flex-col lg:max-w-[380px] lg:h-fit lg:sticky lg:top-24 p-4 sm:p-6 border border-gray-200 rounded-lg bg-white shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:text-white">
       <h2 className="text-lg sm:text-xl font-medium mb-2 text-gray-800 dark:text-gray-200">My Reg Name</h2>
       <p className="text-sm mb-6 text-gray-500 dark:text-gray-400">Description any if you have type here</p>
       
-      <div className="mb-6">
+      <div className="mb-6 flex-1 overflow-y-auto">
         <h3 className="font-medium mb-4 text-gray-800 dark:text-gray-200">Selected components</h3>
         <div className="space-y-4">
           {selectedComponents.length > 0 ? (
@@ -64,7 +64,7 @@ const BuildSummary = ({ selectedComponents, total }: BuildSummaryProps) => {
         <span className="text-lg sm:text-xl font-bold text-gray-900 dark:text-gray-100">{formatPrice(total)}</span>
       </div>
       
-      <div className="flex flex-col sm:flex-row gap-4">
+      <div className="flex flex-col sm:flex-row gap-4 mt-auto">
         <ButtonCustom variant="outline" className="flex-1 dark:bg-transparent dark:text-gray-200 dark:border-gray-600">
           <X className="w-4 h-4 mr-2" />
           Cancel
