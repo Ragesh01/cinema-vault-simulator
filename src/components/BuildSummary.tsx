@@ -39,7 +39,7 @@ const BuildSummary = ({ selectedComponents, total }: BuildSummaryProps) => {
   };
 
   return (
-    <div className="w-full lg:w-[400px] h-fit lg:sticky lg:top-24 p-4 sm:p-6 border border-gray-200 rounded-lg bg-white shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:text-white">
+    <div className="w-full lg:max-w-[380px] h-fit lg:sticky lg:top-24 p-4 sm:p-6 border border-gray-200 rounded-lg bg-white shadow-sm dark:bg-gray-800 dark:border-gray-700 dark:text-white">
       <h2 className="text-lg sm:text-xl font-medium mb-2 text-gray-800 dark:text-gray-200">My Reg Name</h2>
       <p className="text-sm mb-6 text-gray-500 dark:text-gray-400">Description any if you have type here</p>
       
