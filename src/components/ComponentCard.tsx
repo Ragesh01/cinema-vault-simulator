@@ -27,11 +27,11 @@ const ComponentCard = ({ component, onSelect }: ComponentProps) => {
   };
 
   return (
-    <div className="flex flex-col min-w-[240px] sm:min-w-[200px] lg:min-w-[240px] h-[216px] p-4 border border-gray-200 rounded-lg bg-white shadow-sm hover:border-[#7C3AED] hover:shadow-md transition-all dark:bg-gray-800 dark:border-gray-700 dark:hover:border-[#9b87f5]">
+    <div className="flex flex-col min-w-[240px] sm:min-w-[200px] lg:min-w-[240px] p-4 border border-gray-200 rounded-lg bg-white shadow-sm hover:border-[#7C3AED] hover:shadow-md transition-all dark:bg-gray-800 dark:border-gray-700 dark:hover:border-[#9b87f5]">
       <img
         src={component.image}
         alt={component.name}
-        className="w-full h-28 sm:h-36 object-contain mb-3"
+        className="w-full h-24 sm:h-32 object-contain mb-4"
       />
       <h3 className="font-medium text-sm mb-2 text-gray-800 dark:text-gray-200">{component.name}</h3>
       <div className="flex items-center justify-between mt-auto">
