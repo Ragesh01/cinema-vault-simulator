@@ -19,29 +19,29 @@ type ComponentSectionProps = {
 const ComponentSection = ({ title, onSelect }: ComponentSectionProps) => {
   const [selectedComponent, setSelectedComponent] = useState<Component | undefined>(undefined);
   
-  // Mock data - in a real app this would come from an API
+  // Updated mock data with proper naming
   const components: Component[] = [
     {
       id: 1,
-      name: 'AMD Ryzen 5 5600X',
+      name: 'AMD Ryzen 5 5600X 6-Core',
       price: 24999,
       image: '/placeholder.svg'
     },
     {
       id: 2,
-      name: 'AMD Ryzen 7 5800X',
+      name: 'AMD Ryzen 7 5800X 8-Core',
       price: 34999,
       image: '/placeholder.svg'
     },
     {
       id: 3,
-      name: 'AMD Ryzen 9 5900X',
+      name: 'AMD Ryzen 9 5900X 12-Core',
       price: 44999,
       image: '/placeholder.svg'
     },
     {
       id: 4, 
-      name: 'AMD Ryzen 5 5600G',
+      name: 'AMD Ryzen 5 5600G 6-Core',
       price: 19999,
       image: '/placeholder.svg'
     }
@@ -60,7 +60,7 @@ const ComponentSection = ({ title, onSelect }: ComponentSectionProps) => {
   return (
     <section className="relative">
       <h2 className="text-lg font-medium mb-4 text-gray-800 dark:text-gray-200">{title}</h2>
-      <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-none -mx-4 px-4 max-w-[calc(100vw-2rem)] sm:gap-6">
+      <div className="flex gap-4 overflow-x-auto pb-4 scrollbar-none -mx-4 px-4 max-w-full sm:gap-6">
         <PlaceholderCard 
           selectedComponent={selectedComponent} 
           onClear={handleClearComponent} 

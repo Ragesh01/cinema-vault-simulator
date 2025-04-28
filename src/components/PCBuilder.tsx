@@ -71,8 +71,8 @@ const PCBuilder = () => {
   );
 
   return (
-    <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
-      <main className="container mx-auto px-4 py-6 max-w-7xl">
+    <div className="min-h-screen w-full max-w-full bg-gray-50 dark:bg-gray-900 transition-colors duration-300">
+      <main className="container mx-auto px-4 py-6 max-w-[1400px] relative">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
           <div className="flex items-center gap-3">
             <button className="text-gray-600 hover:text-primary transition-colors dark:text-gray-400">
@@ -81,19 +81,21 @@ const PCBuilder = () => {
             <h1 className="text-lg sm:text-xl font-medium text-gray-800 dark:text-gray-200">Custom Build / My Reg Name</h1>
           </div>
           
-          <div className="flex items-center gap-2">
-            <Sun className="w-4 h-4 text-yellow-500" />
-            <Switch 
-              checked={isDarkMode} 
-              onCheckedChange={setIsDarkMode} 
-              className="data-[state=checked]:bg-[#7C3AED]"
-            />
-            <Moon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
+          <div className="flex items-center gap-4 mr-2">
+            <div className="flex items-center gap-2">
+              <Sun className="w-4 h-4 text-yellow-500" />
+              <Switch 
+                checked={isDarkMode} 
+                onCheckedChange={setIsDarkMode} 
+                className="data-[state=checked]:bg-[#7C3AED]"
+              />
+              <Moon className="w-4 h-4 text-gray-500 dark:text-gray-400" />
+            </div>
 
             {isMobile && (
               <Sheet open={isSheetOpen} onOpenChange={setIsSheetOpen}>
                 <SheetTrigger asChild>
-                  <ButtonCustom variant="outline" size="sm" className="ml-4">
+                  <ButtonCustom variant="outline" size="sm">
                     Summary
                   </ButtonCustom>
                 </SheetTrigger>
@@ -106,7 +108,7 @@ const PCBuilder = () => {
         </div>
 
         <div className="flex flex-col lg:flex-row gap-6">
-          <div className="flex-1 w-full overflow-x-hidden">
+          <div className="flex-1 w-full max-w-[calc(100%-400px)]">
             <div className="relative mb-6">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
               <input
@@ -116,7 +118,7 @@ const PCBuilder = () => {
               />
             </div>
             
-            <div className="space-y-8">
+            <div className="space-y-8 pb-8">
               {categories.map(category => (
                 <ComponentSection 
                   key={category.id}
@@ -128,7 +130,7 @@ const PCBuilder = () => {
           </div>
           
           {!isMobile && (
-            <div className="hidden lg:block">
+            <div className="hidden lg:block sticky-sidebar">
               {summaryContent}
             </div>
           )}
